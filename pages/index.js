@@ -3,7 +3,8 @@ import Head from 'next/head'
 import Header from '../src/components/Header.js'
 import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react'
-import matrixStyle from '../assets/styles/matrix.module.css'
+
+import Result from '../src/components/Result.js';
 
 export default function Home() {
   const url = 'https://7hwpo179nc.execute-api.us-east-2.amazonaws.com/production/gentic';
@@ -37,70 +38,6 @@ export default function Home() {
       });
   }
 
-  let component;
-
-  if (responseMatrix.iteration === '') {
-    component = <div>
-      Waiting...
-    </div>
-  } else {
-    component = <div>
-      <div className="column">
-        <div className="column is-quarter"><strong>Iteration: </strong>{responseMatrix.iteration}</div>
-        <div className="column is-quarter"><strong>Individual: </strong>{responseMatrix.individual}</div>
-        <div className="column is-half"><strong>Cost: </strong>{responseMatrix.cost}</div>
-        <div className="column is-half"><strong>Best Solution: </strong>
-          <div className="table-container">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th><abbr title="person1">Wine</abbr></th>
-                  <th><span className={matrixStyle.user1}></span></th>
-                  <th><abbr title="person2">P2</abbr></th>
-                  <th><abbr title="person3">P3</abbr></th>
-                </tr>
-              </thead>
-              {
-                responseMatrix.bestSolution &&
-                /*
-                // To return a dinamic table
-                responseMatrix.bestSolution && responseMatrix.bestSolution.map((items, index) => {
-                return (
-                  <tr key={index}>
-                    {items.map((subItem, sIndex) => {
-                      return <td key={sIndex}>{subItem}</td>
-                    }
-                    )}
-                  </tr>
-                )*/
-                <tbody>
-                  <tr>
-                    <td><progress className="progress is-danger" value="100" max="100"></progress></td>
-                    <td>{responseMatrix.bestSolution[0][0]}</td>
-                    <td>{responseMatrix.bestSolution[0][1]}</td>
-                    <td>{responseMatrix.bestSolution[0][2]}</td>
-                  </tr>
-                  <tr>
-                    <td><progress className="progress is-danger" value="50" max="100"></progress></td>
-                    <td>{responseMatrix.bestSolution[1][0]}</td>
-                    <td>{responseMatrix.bestSolution[1][1]}</td>
-                    <td>{responseMatrix.bestSolution[1][2]}</td>
-                  </tr>
-                  <tr>
-                    <td><progress className="progress is-danger" value="0" max="100"></progress></td>
-                    <td>{responseMatrix.bestSolution[2][0]}</td>
-                    <td>{responseMatrix.bestSolution[2][1]}</td>
-                    <td>{responseMatrix.bestSolution[2][2]}</td>
-                  </tr>
-                </tbody>
-              }
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  }
-
   return (
     <div className="is-family-sans-serif has-background-primary">
       <Head>
@@ -110,8 +47,8 @@ export default function Home() {
       </Head>
       <Header />
       <main className="container box has-background-primary-light">
-        <div className="columns is-one-third pl-5 pt2 pb2">
-          <div className="column is-centered">
+        <div className="columns is-multiline pl-6 pt-4 pb-4 pr-6">
+          <div className="column is-one-third is-align-content-center">
             <form onSubmit={handleSubmit(execute)}>
               <div className="field">
                 <label className="label">Population: </label>
@@ -144,9 +81,10 @@ export default function Home() {
               <button type="submit" className="button is-primary">Process</button>
             </form>
           </div>
+
           <div className="column is-two-thirds pr-5">
             <div>
-              {component}
+              {responseMatrix.iteration && <Result data={responseMatrix} />}
             </div>
           </div>
         </div>
