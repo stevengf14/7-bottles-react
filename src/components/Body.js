@@ -9,6 +9,7 @@ export default function Body(props) {
     const url = 'https://7hwpo179nc.execute-api.us-east-2.amazonaws.com/production/gentic';
     const [responseMatrix, setResponseMatrix] = useState({});
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
+    const [ loading, setLoading ] = useState(false);
 
     useEffect(() => {
         setResponseMatrix({
@@ -19,6 +20,7 @@ export default function Body(props) {
         })
     }, [])
     const execute = (data) => {
+        setLoading(true);
         axios.post(url, data)
             .then((response) => {
                 if (response.status === 200) {
@@ -29,7 +31,6 @@ export default function Body(props) {
                         cost: response.data.cost,
                         bestSolution: response.data.bestSolution
                     });
-                    //console.log(responseMatrix);
                 }
             })
             .catch((error) => {
@@ -70,13 +71,16 @@ export default function Body(props) {
                             </div>
                             {errors.population && <span>Fiability required. Min value:1 - Max value: 20</span>}
                         </div>
-                        <button type="submit" className="button is-primary">Process</button>
+                        <button type="submit" className="button is-info">Process</button>
                     </form>
                 </div>
 
                 <div className="column is-two-thirds pr-5">
                     <div>
-                        {responseMatrix.iteration && <Result data={responseMatrix} />}
+                        {responseMatrix.iteration ?
+                            <Result data={responseMatrix} />
+                            : loading && <div className="hero is-large is-align-items-center">Loading...</div>
+                        }
                     </div>
                 </div>
             </div>

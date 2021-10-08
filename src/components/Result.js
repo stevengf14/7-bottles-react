@@ -2,6 +2,7 @@ import Matrix from "./Matrix"
 
 export default function Result(props) {
     const { data } = props
+
     return (
         <div>
             <div className="column">
