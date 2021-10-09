@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Header from '../src/components/Header.js'
 import Body from '../src/components/Body.js';
+import Information from '../src/components/Information.js';
+import Footer from '../src/components/Footer.js';
 
 export default function Home() {
 
@@ -12,12 +14,12 @@ export default function Home() {
         <link rel="icon" href="/adn.png" />
       </Head>
       <Header />
-      <main className="container box mt-6">
+
+      <main className="container box ">
+        <Information />
         <Body />
       </main>
-      <footer className="footer">
-
-      </footer>
+        <Footer />
     </div>
   )
 }

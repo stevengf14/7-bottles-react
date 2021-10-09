@@ -2,7 +2,7 @@ import styles from '../../assets/styles/header.module.css';
 
 export default function Header() {
     return (
-        <div className="has-background-black">
+        <div className="container has-background-black">
             <section className="hero is-medium is-align-items-center">
                 <div className="hero-body">
                     <div className={styles.header}>
