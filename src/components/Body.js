@@ -65,7 +65,7 @@ export default function Body(props) {
                         <div className="field">
                             <label className="label">Population: </label>
                             <div className="control">
-                                <input type="number" className="is-info" disabled={processed} placeholder="1-1000" {...register('population', { required: true, min: 1, max: 1000 })}></input>
+                                <input type="number" className="is-info" disabled={processed} placeholder="1-100" {...register('population', { required: true, min: 1, max: 100 })}></input>
                             </div>
                             {errors.population && <span className="has-text-warning has-text-weight-semibold">Population required.<p className="has-text-danger">min: 1 - max: 1000</p></span>}
                         </div>
@@ -79,7 +79,7 @@ export default function Body(props) {
                         <div className="field">
                             <label className="label">Mutation Probability: </label>
                             <div className="control">
-                                <input className="is-info" disabled={processed} placeholder="0.0 - 1"{...register('mutation_probability', { required: true, min: 0, max: 1})}></input>
+                                <input type="number" step="any" className="is-info" disabled={processed} placeholder="0.0 - 1"{...register('mutation_probability', { required: true, min: 0, max: 1})}></input>
                             </div>
                             {errors.mutation_probability && <span className="has-text-warning has-text-weight-semibold">Mutation Probability required. <p className="has-text-danger">min: 0 - max: 1</p></span>}
                         </div>
