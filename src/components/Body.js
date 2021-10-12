@@ -88,7 +88,7 @@ export default function Body(props) {
                             <div className="control">
                                 <input type="number" className="is-info" disabled={processed} placeholder="1-20" {...register('fiability', { required: true, min: 1, max: 20 })}></input>
                             </div>
-                            {errors.population && <span className="has-text-warning has-text-weight-semibold">Fiability required.<p className="has-text-danger">min:1 - max: 20</p></span>}
+                            {errors.fiability && <span className="has-text-warning has-text-weight-semibold">Fiability required.<p className="has-text-danger">min:1 - max: 20</p></span>}
                         </div>
                         <button type="submit" className="button is-info is-rounded mr-2">Process</button>
                         <button className="button is-info is-outlined is-rounded " onClick={reset}>Reset</button>
