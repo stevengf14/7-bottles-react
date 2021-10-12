@@ -1,34 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 7_bottles
+It's an adaptation of the Problem of 7 bottles, using Genetic Algorithm in Python.
 
-## Getting Started
+#### The problem
+You have 21 bottles of wine. 7 full, 7 half full and 7 empty. And you must distribute to 3 people so that each one has the same amount of wine and the same number of bottles.
 
-First, run the development server:
+#### The solution
+The problem request an initial population, the number of iterations, the mutation probability and the cost or fitness that you expect.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+**Population:** The algorithm generates a random number of individuals that represent a solution.\
+**Iterations:** The populations will reproduce with its best individuals and will sometimes mutate. This process is carried out during n iterations.\
+**Mutation:** A random number is compared with the mutation probability and only in this case, it generates new individuals.\
+**Cost/Fitness:** The perfect solution will cost 20. But you can enter a different cost to stop the process.\
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The response presents the information of the algorithm execution:\
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+**Iteration:** The number of the iteration where the algorithm finished.\
+**Individual:** The position of the best individual in the population.\
+**Cost/Fitness:** The cost or fitness of the best individual (20 is the best cost possible).\
+**Best Solution:** The matrix of the best solution.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Backend
+The solution developed using python: https://github.com/stevengf14/7-bottles-python
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Test
+If you want to test the algorithm, here is an option: https://kind-williams-85b619.netlify.app/
