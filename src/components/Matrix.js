@@ -16,7 +16,7 @@ export default function Matrix(props) {
                         <th><progress className="progress is-danger mr-4" value="100" max="100"></progress></th>
                         <th><progress className="progress is-danger mr-4" value="50" max="100"></progress></th>
                         <th><progress className="progress is-danger mr-4" value="0" max="100"></progress></th>
-                        <th>Wine</th>
+                        <th>W</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,7 +51,7 @@ export default function Matrix(props) {
                     })
                     }
                     < tr >
-                        <td className="is-link has-text-weight-bold">W</td>
+                        <td className="is-link has-text-weight-bold">B</td>
                         <td className="has-background-link-light has-text-centered">{row0}</td>
                         <td className="has-background-link-light has-text-centered">{row1}</td>
                         <td className="has-background-link-light has-text-centered">{row2}</td>

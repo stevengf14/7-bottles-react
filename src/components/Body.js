@@ -90,7 +90,7 @@ export default function Body(props) {
                             </div>
                             {errors.fiability && <span className="has-text-warning has-text-weight-semibold">Fiability required.<p className="has-text-danger">min:1 - max: 20</p></span>}
                         </div>
-                        <button type="submit" className="button is-info is-rounded mr-2">Process</button>
+                        <button type="submit" className="button is-info is-rounded mr-2" disabled={processed}>Process</button>
                         <button className="button is-info is-outlined is-rounded " onClick={reset}>Reset</button>
                     </form>
                 </div>
