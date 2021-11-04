@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react'
 import Result from './Result.js';
 
 
-export default function Body(props) {
+export default function Body() {
     const url = 'https://7hwpo179nc.execute-api.us-east-2.amazonaws.com/production/gentic';
     const [responseMatrix, setResponseMatrix] = useState({});
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const [ loading, setLoading ] = useState(false);
-    const [ processed, setProssed ] = useState(false);
+    const [ processed, setProcessed ] = useState(false);
 
     useEffect(() => {
         setResponseMatrix({
@@ -22,7 +22,7 @@ export default function Body(props) {
     }, [])
     const execute = (data) => {
         setLoading(true);
-        setProssed(true);
+        setProcessed(true);
         axios.post(url, data)
             .then((response) => {
                 if (response.status === 200) {
@@ -54,7 +54,7 @@ export default function Body(props) {
             bestSolution: []
         })
         setLoading(false);
-        setProssed(false);
+        setProcessed(false);
     }
 
     return (
